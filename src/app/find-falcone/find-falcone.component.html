@@ -1,0 +1,28 @@
+<div class="container-fluid bg-3">
+  <h3 class="text-center">Select planets you want to search in:</h3>
+  <br> 
+  <div class="row padding-row">
+    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 padding-form" *ngFor="let planet of [1,2,3,4]; index as x">      
+      <h5>Destination {{x+1}}</h5>
+      <div class="padding-auto">
+        <ng2-completer placeholder="Select Planet" [(ngModel)]="searchStr[x]" 
+          [datasource]="dataService" [minSearchLength]="0" (keyup)="updatePlanetList(x)" (focus)="getCurrentPlanet(x)" (blur)="updatePlanetReq(x)"></ng2-completer>
+      </div>
+      <div *ngFor="let vehicles of vehicleData" class="padding-radio">
+        <div *ngIf="requestData.planet_names[x]">
+          <input type="radio" [value]="vehicles.name" name="'vehicles_'{{x}}" [(ngModel)]="selectedVehicle[x]" (change)="selectVehicle(x,vehicles.name)"
+          [disabled]="vehicles.total_no === 0 || planetDistance[x] > vehicles.max_distance">
+          {{vehicles.name}}({{vehicles.total_no}})
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 padding-form">
+      <h4>Time Taken:
+        <p *ngIf="timeTaken !== 0" class="time"> {{timeTaken}}</p>
+      </h4>
+    </div>
+  </div>
+  <div class="row padding-row">
+    <button type="button" (click)="findFalcone()" class="btn btn-dark position-button">Find Falcone!</button>
+  </div>
+</div>

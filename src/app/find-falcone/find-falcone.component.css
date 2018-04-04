@@ -1,0 +1,24 @@
+.padding-form {
+    padding-top: 30px;
+}
+
+.padding-auto {
+    padding: 15px 0 10px 0;
+}
+
+.padding-radio {
+    padding-top: 10px;
+}
+
+.padding-row {
+    padding-left: 15%;
+}
+
+.position-button {
+    width: 76%;
+    margin: 8% 0 0 10px;
+}
+
+.time {
+    margin-top: 15px;
+}
